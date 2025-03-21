@@ -1,7 +1,22 @@
-{% extends 'main.html' %}
+{% extends 'main.html' %} {% block title %} home {% endblock %} 
+{% block content%}
+<div
+  class="container bg-gradient-to-b from-black via-black to-red-800 h-screen font-[Rubik]"
+>
+  
+{% include 'navbar.html' %}
+  <div class="p-6 mx-10 my-4 flex flex-col items-center justify-start space-y-4 rounded-md bg-white/30" style="height: 80vh;">
+    <img src="https://placehold.co/1400x400/white/red"  class="h-160 w-300 object-scale-down"> 
+    
+    <div class="flex justify-between items-center w-300">
+    <h1 class="text-3xl font-bold text-secondary">blog title</h1> 
+    </div>
+    
+    <div class="flex flex-col justify-between items-start w-300 space-y-4 mx-4">
+        <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, nostrum!</p>
 
-{% block title %}
-home
+        <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">readmore</a>
+        </div>
+  </div>
+</div>
 {% endblock %}
-
-{% block %}
