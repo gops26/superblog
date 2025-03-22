@@ -3,8 +3,11 @@
       SuperBlog
     </h1>
     <div class="space-x-4">
-        <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">Blogs</a>
-        <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400   hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out">login</a>
-        <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">logout</a>
+      {% if user.authenticated %}
+        <a href="{% url 'logout' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400   hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out">login</a>
+      {% endif %}
+        <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">blogs</a>
     </div>
   </div>
