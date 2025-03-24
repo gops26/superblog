@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from .forms import Login_form,Register_form
+from .forms import Login_form,Register_form,BlogUploadForm
 from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home_view(request):
     return render(request,"home.html")
@@ -44,3 +45,18 @@ def register_view(request):
 
 def blogs_view():
     pass
+
+@login_required
+def blog_upload(request):
+    if request.method == "POST" :
+        form = BlogUploadForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            print("success")
+            redirect("home")
+    else:
+        print("failde")
+        form = BlogUploadForm()
+    return render(request,"blogupload.html",{"form":form})

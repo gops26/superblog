@@ -1,15 +1,16 @@
 {% extends 'main.html' %}
 {% load tailwind_filters %}
 
- {% block title %} login into your account {% endblock %} 
+ {% block title %} Blog upload {% endblock %} 
 {% block content%}
 <div
-  class="container bg-gradient-to-b from-black via-black to-red-800 h-screen font-[Rubik]"
+  class="container bg-gradient-to-b from-black via-black to-red-800  font-[Rubik]"
+  style="height: 100%;"
 >
   
 {% include 'navbar.html' %}
-  <div class="p-6 mx-10 my-4 flex flex-col items-center justify-between space-y-4 ">
-    <form method="post" class="bg-white rounded-xl w-300 h-95  p-6 form light border" >
+  <div class="p-6 mx-10 my-4 flex flex-col items-center justify-between  ">
+    <form method="post" class="bg-white rounded-xl w-300 h-screen  p-6 form light border" >
       {% csrf_token %}
       {{form|crispy}}
 

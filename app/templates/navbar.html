@@ -4,8 +4,12 @@
     </h1>
     <div class="space-x-4">
       {% if user.is_authenticated %}
+      <a href="{% url 'blogupload' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">write blog</a>
+
         <a href="{% url 'logout' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">logout</a>
       {% else %}
+      <a href="{% url 'register_view' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400   hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out">register</a>
+
         <a href="{% url 'login' %}" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400   hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out">login</a>
       {% endif %}
         <a href="" class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black  bg-primary px-2 py-2 transition duration-700 ease-in-out">blogs</a>
