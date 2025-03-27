@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from .forms import Login_form,Register_form,BlogUploadForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
+from .models import Blog
 # Create your views here.
 def home_view(request):
-    return render(request,"home.html")
+    user = request.user
+    return render(request,"home.html",{'user':user})
 
 def login_view(request):
     if request.method == "POST":
@@ -60,3 +62,12 @@ def blog_upload(request):
         print("failde")
         form = BlogUploadForm()
     return render(request,"blogupload.html",{"form":form})
+
+def all_blogs(request):
+    items =  Blog.objects.all()
+    return render(request, 'allblogs.html',{"items":items})
+
+@login_required
+def my_blogs(request):
+    items = Blog.objects.filter(user=request.user)
+    return render(request, 'myblogs.html',{"items":items})

@@ -1,0 +1,58 @@
+{% extends 'main.html' %} {% block title %}Posts {% endblock %} 
+{% block content%}
+<div
+  class="container bg-gradient-to-b from-black via-black to-red-800  font-[Rubik]"
+>
+  {% include 'navbar.html' %}
+  <div
+    class="p-6 mx-10 my-4 grid grid-cols-3 space-y-4  rounded-md "
+    style=""
+  >
+
+  <!-- one -->
+   {% for item in items %}
+    <div
+      class="max-w-sm bg-gray-800 border justify-items-center  rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+    >
+      <a href="#">
+      </a>
+      <div class="p-5">
+        <a href="#">
+        <img class="rounded-t-lg fit " src="{{item.cover_image.url}}" alt="" />
+          <span class="text-yellow-400">author : {{item.user.username}}</span>
+          <h5
+            class="mb-2 text-2xl font-bold tracking-tight text-primary dark:text-white"
+          >
+            {{item.title}}
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-white dark:text-gray-400">
+          {{item.content}}
+        </p>
+        <a
+          href="#"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Read more
+          <svg
+            class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endblock %}
+</div>
