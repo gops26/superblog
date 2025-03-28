@@ -13,3 +13,11 @@ class Blog(models.Model):
     
     def __str__(self):
         return f"{self.title}"
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profile_image = models.ImageField(upload_to="profiles" , default="default_profile.png")
+
+    def __str__(self):
+        return F"{self.user.username}'s profile"

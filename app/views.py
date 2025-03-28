@@ -2,11 +2,14 @@ from django.shortcuts import render,redirect
 from .forms import Login_form,Register_form,BlogUploadForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Blog
+from .models import Blog,UserProfile
+from django.contrib.auth.models import User 
 # Create your views here.
+
 def home_view(request):
     user = request.user
-    return render(request,"home.html",{'user':user})
+    user_profile = UserProfile.objects.filter(id= user.id)
+    return render(request,"home.html",{'user':user, 'user_profile':user_profile})
 
 def login_view(request):
     if request.method == "POST":
@@ -38,8 +41,11 @@ def register_view(request):
             user = authenticate(request, username=username,password=password )
             if user is not None:
                 login(request,user)
+                user_model = User.objects.get(username=username)
+                new_profile =  UserProfile.objects.create(user=user_model)
+                new_profile.save()
                 print("sucess") 
-                redirect("home")
+                return redirect("home")
     else:
         print("Failed")
         form = Register_form()
