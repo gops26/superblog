@@ -8,6 +8,7 @@ urlpatterns = [
     path("app/write-blog", views.blog_upload,name="blogupload"),
     path("app/all-blogs", views.all_blogs,name="all-blogs"),
     path("app/my-blogs", views.my_blogs,name="my-blogs"),
+    path("app/my-profile", views.profile_view, name="profile"),
 
 
 ]

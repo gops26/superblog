@@ -1,0 +1,46 @@
+{% extends 'main.html' %} {% block title %} {{profile}}'s profile {% endblock %}
+{% block content%}
+<center>
+<h1 class="text-3xl text-yellow-500 font-[Rubik] py-2">my profile</h1>
+</center>
+
+<div class="flex  items-center px-32 gap-x-32">
+  <div class="" name="profile image div">
+    <img src="{{profile.profile_image.url}}" alt="" />
+  </div>
+  <div class="" name="detail div">
+    <div>
+      <h1 class="text-white font-[Rubik] text-3xl">
+        {{profile.user.username}}
+      </h1>
+    </div>
+    <div class="grid grid-cols-2 gap-x-32">
+      <div>
+        <h2 class="text-red-100 font-[Rubik] text-xl">Email</h2>
+        <h4 class="text-primary text-md font-[Rubik]">
+          {{profile.user.email}}
+        </h4>
+      </div>
+      <div>
+        <h2 class="text-red-100 font-[Rubik] text-xl">firstname</h2>
+        <h4 class="text-primary text-md font-[Rubik]">
+          {{profile.user.first_name}}
+        </h4>
+      </div>
+      <div>
+        <h2 class="text-red-100 font-[Rubik] text-xl">last_name</h2>
+        <h4 class="text-primary text-md font-[Rubik]">
+          {{profile.user.last_name}}
+        </h4>
+      </div>
+      <div>
+        <h2 class="text-red-100 font-[Rubik] text-xl">last_name</h2>
+        <h4 class="text-primary text-md font-[Rubik]">
+          {{profile.user.last_name}}
+        </h4>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

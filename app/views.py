@@ -3,13 +3,30 @@ from .forms import Login_form,Register_form,BlogUploadForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Blog,UserProfile
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User, AnonymousUser 
+
 # Create your views here.
 
+
 def home_view(request):
+    best_blog = Blog.objects.all()[0]
+    if isinstance(request.user, AnonymousUser):
+        return render(request,"home.html",{'bestblog':best_blog} )
+    
     user = request.user
-    user_profile = UserProfile.objects.filter(id= user.id)
-    return render(request,"home.html",{'user':user, 'user_profile':user_profile})
+    user_object = User.objects.get(username=request.user.username)
+    
+    user_profile = UserProfile.objects.get(user=user_object)
+
+    best_blog = Blog.objects.all()[0]
+    return render(request,"home.html",{'user':user, 'user_profile':user_profile, 'bestblog':best_blog} )
+
+def profile_view(request):
+    user = request.user
+    user_obj = User.objects.get(username=user.username)
+    profile = UserProfile.objects.get(user=user_obj)
+    return render(request,'profile.html',{'profile':profile}) 
+
 
 def login_view(request):
     if request.method == "POST":
