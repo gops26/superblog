@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load tailwind_filters %}
+
+ {% block title %} login into your account {% endblock %} 
+{% block content%}
+<div
+  class="container bg-gradient-to-b from-black via-black to-red-800 h-screen font-[Rubik]"
+>
+  
+{% include 'navbar.html' %}
+  <div class="p-6 mx-10 my-4 flex flex-col items-center justify-between space-y-4 ">
+    <form method="post" class="bg-white rounded-xl w-300 h-95  p-6 form light border" >
+      {% csrf_token %}
+      {{form|crispy}}
+
+
+      <!-- #secondary btn -->
+      <input type="submit" class="text-white text-md font-Rubik rounded-xl hover:bg-black hover:text-white  bg-primary px-2 py-2 transition duration-700 ease-in-out">
+    </form>
+
+    <p class="text-white font-[Rubik] font-bold text-md"> not have account ? <span class="text-yellow-400"><a href="{% url 'register_view' %}">Register</a></span></p>
+
+  </div>
+</div>
+{% endblock %}

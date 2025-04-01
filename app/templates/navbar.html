@@ -1,0 +1,53 @@
+<div
+  class="navbar flex items-center bg-[rgba(255,255,255,0.1)] justify-between p-4"
+>
+  <h1 class="text-white text-2xl font-[Rubik] font-bold basis-128 space">SuperBlog</h1>
+  <div class="space-x-4 basis-128 inline-flex items-center justify-end">
+    <a
+      href=""
+      class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out"
+      >blogs</a
+    >
+    {% if user.is_authenticated %}
+
+    <a
+      href="{% url 'blogupload' %}"
+      class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out"
+      >write blog</a
+    >
+
+    <a
+      href="{% url 'logout' %}"
+      class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out"
+      >logout</a
+    >
+
+    <div class="justify-items-center">
+     {% if user_profile is not None %}
+      <svg height="28" width="28" xmlns="http://www.w3.org/2000/svg">
+        
+        <image height="28" width="28" href="{{user_profile.profile_image.url}}" />
+      </svg>
+      <span class="text-white font-medium font-[Rubik]"> <a class=" hover:text-yellow-500 delay-300" href="{% url 'profile' %}">{{user.username}}</a></span>
+      {% endif  %}
+      <!-- <img src="{{user_profile.profile_image.url }}" alt="profile picture" class=""> -->
+    </div>
+    
+    {% else %}
+    <a
+      href="{% url 'register_view' %}"
+      class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out"
+      >register</a
+    >
+
+    <a
+      href="{% url 'login' %}"
+      class="text-white text-md font-Rubik rounded-xl hover:bg-yellow-400 hover:text-black bg-primary px-2 py-2 transition duration-700 ease-in-out"
+      >login</a
+    >
+    {% endif %}
+    
+  </div>
+
+
+</div>

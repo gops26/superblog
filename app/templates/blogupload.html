@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load tailwind_filters %}
+
+ {% block title %} Blog upload {% endblock %} 
+{% block content%}
+<div
+  class="container bg-gradient-to-b from-black via-black to-red-800  font-[Rubik]"
+  style="height: 100%;"
+>
+  
+{% include 'navbar.html' %}
+  <div class="p-6 mx-10 my-4 flex flex-col items-center justify-between  ">
+    <form method="post" class="bg-white rounded-xl w-300 h-screen  p-6 form light border" >
+      {% csrf_token %}
+      {{form|crispy}}
+
+
+      <!-- #secondary btn -->
+      <input type="submit" class="text-white text-md font-Rubik rounded-xl hover:bg-black hover:text-white  bg-primary px-2 py-2 transition duration-700 ease-in-out">
+    </form>
+  </div>
+</div>
+{% endblock %}
